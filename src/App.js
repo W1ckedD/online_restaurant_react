@@ -10,16 +10,21 @@ import cx from 'classnames';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
 
+// Pages
+import LoginPage from './pages/LoginPage';
+
 const App = () => {
-  const { sidebarOpen } = useSelector(state => state.sidebar);
+  const { sidebarOpen } = useSelector((state) => state.sidebar);
   return (
     <>
       <Router>
         <Navbar />
         <div className="container">
           <Sidebar />
-          <div className={cx("context", { 'shifted': !sidebarOpen })}>
-            <h1>React App</h1>
+          <div className={cx('context', { shifted: !sidebarOpen })}>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
           </div>
         </div>
       </Router>
